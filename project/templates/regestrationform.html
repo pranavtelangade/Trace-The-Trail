@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Missing Person Registration Form</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<style>
+		body {
+            background-color: #140303;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+    
+        .container {
+            max-width: 90vw;
+            margin: auto;
+            padding: 40px 20px;
+            background-color: #140303;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    
+        h1 {
+            font-size: 36px;
+            margin-top: 0;
+            margin-bottom: 30px;
+            text-align: center;
+            color: #F7F7F7;
+        }
+        h2,h3,p{
+            color: #F7F7F7;
+        }
+    
+    
+        label {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: block;
+            color: #F7F7F7;
+        }
+    
+        input[type="text"], input[type="number"], select {
+            border-radius: 0;
+            border: none;
+            border-bottom: 2px solid #F7F7F7;
+            padding: 10px 0;
+            font-size: 16px;
+            background-color: transparent;
+            box-shadow: none;
+        }
+    
+        input[type="text"]:focus, input[type="number"]:focus, select:focus {
+            outline: none;
+            border-bottom: 2px solid #007bff;
+        }
+    
+        .file-upload {
+            display: inline-block;
+            font-size: 16px;
+            font-weight: bold;
+            padding: 10px;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+        }
+    
+        .file-upload:hover {
+            background-color: #0069d9;
+        }
+    
+        .file-upload input[type="file"] {
+            display: none;
+        }
+    
+        .btn-register-user {
+            background-color: #28a745;
+            border-color: #28a745;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 10px;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+        }
+    
+        .btn-register-user:hover {
+            background-color: #218838;
+            border-color: #1e7e34;
+        }
+    
+        /* New styles for added colors */
+        input[type="date"], textarea {
+            border-radius: 0;
+            border: none;
+            border-bottom: 2px solid #333;
+            padding: 10px 0;
+            font-size: 16px;
+            background-color: transparent;
+            box-shadow: none;
+            color: #333;
+        }
+    
+        input[type="date"]:focus, textarea:focus {
+            outline: none;
+            border-bottom: 2px solid #007bff;
+        }
+    
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 10px;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+        }
+    
+        /* Additional colors */
+        .bg-light-blue {
+            background-color: #ADD8E6;
+        }
+    
+        .text-light-blue {
+            color: #ADD8E6;
+        }
+        .not-scrollable {
+            overflow: hidden;
+            background-color: #f2f2f5; /* Hexadecimal value for light gray-blue */
+            background-image: linear-gradient(to bottom, #f2f2f5, #e0e0e6); /* Gradient from light gray-blue to slightly darker gray-blue */
+          }
+          .modal-dialog {
+            max-width: none;
+            width: auto;
+            margin: 0;
+          }
+          
+          .modal-content {
+            height: auto;
+            max-height: none;
+            overflow: visible;
+            background-color: #140303;
+          }
+          
+          .modal-body {
+            overflow-y: hidden;
+          }
+          .form-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+          }
+          .form-group label {
+            flex-basis: 200px;
+            margin-right: 20px;
+          }
+          .form-group input,
+          .form-group select,
+          .form-group textarea {
+            flex-grow: 1;
+          }
+          input[type="file"] {
+            border: none;
+            color: transparent;
+            background: none;
+            cursor: pointer;
+            font-size: 16px;
+            padding: 10px 20px;
+            display: inline-block;
+            vertical-align: middle;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            background-color: #140303;
+            color: #fff;
+          }
+          
+          input[type="file"]::-webkit-file-upload-button {
+            visibility: hidden;
+          }
+          
+          input[type="file"]::before {
+            content: 'Choose File';
+            display: inline-block;
+            background-color: #F7F7F7;
+            padding: 10px 20px;
+            color: #333;
+            border-radius: 5px;
+          }
+          
+          input[type="file"]:hover::before {
+            background-color: #007bff;
+            color: #fff;
+          }
+          .form-control {
+            text-align: left;
+            display: block;
+    width: 100%;
+    height: calc(1.5em + 0.75rem + 2px);
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #F7F7F7;
+    background-color: #140303;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+        }
+	</style>
+</head>
+<body>
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="container">
+            <h1>Missing Person Registration</h1>
+            <form action="/face_detection/register_person" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" name='username' id="username" placeholder="Enter username" style="width: 50%" required>
+                </div>
+                <div class="form-group">
+                    <label for="age">Age</label>
+                    <input type="number" class="form-control" name='age' id="age" placeholder="Enter age" style="width: 50%" required>
+                </div>
+                <div class="form-group">
+                    <label for="gender">Gender</label>
+                    <select class="form-control" name='gender' id="gender" style="width: 50%">
+                        <option>Male</option>
+                        <option>Female</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="identification">Identification Marks</label>
+                    <textarea class="form-control" name='identification' id="identification" rows="3" placeholder="Enter identification marks" style="width: 100%"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="image1">Missing Person Image</label>
+                    <input type="file" class="form-control-file" name='image1' id="image1" style="width: 100%" accept=".jpg, .jpeg, .png" required>
+                </div>
+                <div class="form-group text-center" style="text-align: center;">
+                    <button type="submit" class="btn btn-primary btn-register-user" >Register</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

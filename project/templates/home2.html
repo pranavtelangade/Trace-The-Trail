@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Person Detection and Registration</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<style>
+		body {
+			background-color: #140303;
+			margin: 0;
+			padding: 0;
+			font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+		}
+
+       .container {
+			max-width: 800px;
+			margin: auto;
+			padding: 40px 20px;
+			background-color: #625bd5;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+		h1 {
+			font-size: 36px;
+			margin-top: 0;
+			margin-bottom: 30px;
+			text-align: center;
+			color: #fff;
+		}
+
+		.btn-detect-person {
+			background-color: #007bff;
+			border-color: #007bff;
+		}
+
+		.btn-detect-person:hover {
+			background-color: #0069d9;
+			border-color: #0062cc;
+		}
+
+		.btn-register-person {
+			background-color: #28a745;
+			border-color: #28a745;
+		}
+
+		.btn-register-person:hover {
+			background-color: #218838;
+			border-color: #1e7e34;
+		}
+
+		.btn-block {
+			display: block;
+			width: 100%;
+		}
+
+		
+            .container {
+                max-width: 90vw;
+                margin: auto;
+                padding: 40px 20px;
+                background-color: #140303;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                animation: fadeInUp 1s forwards;
+            }
+    
+            h1 {
+                font-size: 36px;
+                margin-top: 0;
+                margin-bottom: 30px;
+                text-align: center;
+                color: #f7f7f7;
+                animation: fadeIn 1s forwards;
+            }
+            
+            h2,h3{
+                color: #f7f7f7;
+            }
+            
+            p{
+                color: #f7f7f7;
+            }
+
+
+    
+            .btn-detect-person {
+                background-color: #140303;
+                border-color: #007bff;
+                animation: none;
+            }
+    
+            .btn-detect-person:hover {
+                background-color: #0069d9;
+                border-color: #0069d9;
+                animation: none;
+            }
+    
+            .btn-register-person {
+                background-color: #140303;
+                border-color: #28a745;
+                animation: none;
+            }
+    
+            .btn-register-person:hover {
+                background-color: #218838;
+                border-color: #1e7e34;
+                animation: none;
+            }
+    
+            .btn-block {
+                display: block;
+                width: 100%;
+            }
+    
+            .person-detection-images {
+                margin-top: 30px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-wrap: wrap;
+            }
+    
+            .person-detection-image {
+                width: 250px;
+                height: 250px;
+                margin: 20px;
+                border: 5px solid #f5f5f5;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                background-color: #fff;
+                background-size: contain;
+                background-position: center;
+                background-repeat: no-repeat;
+                transition: all 0.3s ease-in-out;
+            }
+    
+            .person-detection-image:hover {
+                transform: scale(1.05);
+            }
+    
+            .person-detection-svg {
+                width: 100%;
+                height: 100%;
+            }
+    
+            .person-detection-svg .face {
+                fill: none;
+                stroke: #ffcc00;
+                stroke-width: 5;
+                stroke-miterlimit: 10;
+            }
+    
+            .person-detection-svg .eyes {
+                fill: #fff;
+            }
+    
+            .person-detection-svg .mouth {
+                fill: none;
+                stroke: #ffcc00;
+                stroke-width: 5;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+                stroke-miterlimit: 10;
+            }
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                    transform: translateY(-20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+    
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+    
+            @keyframes pulse {
+                0% {
+                    transform: scale(1);
+                }
+                50% {
+                    transform: scale(1.05);
+                }
+                100% {
+                    transform: scale(1);
+                }
+            }
+            #video-container {
+                position: absolute;
+                width: 1280px;
+                height: 720px;
+                margin: auto;
+                margin-top: 50px;
+                margin-left: 50px;
+                border: 1px solid #ccc;
+              }
+              #video {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+              }
+
+              #close-button{
+                position: fixed;
+                margin-left: 80vw;
+              }
+              
+              #image {
+                margin-left: 50px;
+              }
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h1>Missing Person Detection and Registration</h1>
+		<div class="row">
+			<div class="col-sm-6">
+				<a id='detect-person' class="btn btn-lg btn-block btn-primary btn-detect-person" style="color:#f7f7f7; cursor: pointer;">Detect Person</a>
+			</div>
+			<div class="col-sm-6">
+				<a href="/face_detection/register_person" class="btn btn-lg btn-block btn-success btn-register-person">Register Person</a>
+			</div>
+		
+        </div>
+
+        <div id="video-container" style="display:none;">
+            <video id="video"></video>
+          </div>
+          <img id="image" />
+          <button id="close-button">Close</button>
+		<div class="person-detection-images">
+            <h2>Facial Detection Facts and Information</h2>
+            <p style="text-align: justify; text-justify: inter-word;">Missing cases have been increasing day by day and the process of investigating and finding the lost person consumes a lot of time. Single Stage Detectors speed up the process of matching the lost person's image to their last presence (face) extracted from the CCTV footages. Feature extraction procedure can be carried out and optimized by deep learning models with little to no manual work. Any data (video, pictures) can be fed into a deep learning model, which uses the architecture provided to process the data and execute data extraction to train itself and learn about the numerous data elements affecting the prediction or output. By feeding the data into the model and obtaining the output, the model can be used to forecast unknown data after successfully undergoing training. After skimming through the previous research, its many shortcomings were exposed. In India, still manual search and investigation is used in a lot of places. Face recognition resolves the problem of tedious search process. The research proposes a system that would accelerate the process of finding missing people and aid the search by matching the photo uploaded to the individual's face extracted from the CCTV footages.</p>
+        </div>
+        <div class="footer" style="margin-left: 38vw; margin-top: 100px;">
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="copyright-box">
+                  <p>Made with ❤️ by Group 1</p>              
+                  <p style="margin-left: -5vw">Payal Das | Manashri Gasti | Pranav Telangade</p>
+                 </div>
+                </div>
+              </div>
+            </div>
+    </div>
+    <script>
+        const detectPersonButton = document.getElementById("detect-person");
+detectPersonButton.addEventListener("click", () => {
+    fetch("/face_detection/start_task", {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+        },
+    })
+    document.getElementById("close-button").style.display = "block";
+
+    const video = document.getElementById("video");
+    video.style.display="none"
+    const canvas = document.createElement("canvas");
+
+    // Get the canvas context and set its dimensions to match the video element
+    const context = canvas.getContext("2d");
+
+    // Start the video stream and set the video element as the source
+    navigator.mediaDevices.getUserMedia({ video: true }).then((stream) => {
+        video.srcObject = stream;
+        video.play();
+
+        // Set the canvas dimensions to match the video stream metadata
+        video.addEventListener("loadedmetadata", () => {
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+        });
+
+        const closeButton = document.getElementById("close-button");
+        closeButton.addEventListener("click", () => {
+            document.getElementById("video-container").style.display = "none";
+            document.getElementById("close-button").style.display = "none";
+            document.getElementById("image").style.display = "none";
+            if (stream) {
+                stream.getTracks().forEach((track) => track.stop());
+                stream = null;
+            }
+
+            fetch("/face_detection/stop_task", {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            })
+
+        });
+
+        function captureAndSend() {
+            // Draw the current video frame onto the canvas
+            context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+            // Convert the canvas image to a base64-encoded JPEG image
+            const dataURL = canvas.toDataURL("image/jpeg");
+            const base64Image = dataURL.split(",")[1];
+
+            // Send the image data to the server as an HTTP POST request
+            fetch("/face_detection/detect_person", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    image: base64Image,
+                }),
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    // Update the image on the page with the base64-encoded image returned by the API
+                    const image = document.getElementById("image");
+                    image.src = "data:image/jpeg;base64," + data.image;
+                })
+                .catch((error) => console.error("Error:", error));
+        }
+
+        // Capture and send the video frames every 100 milliseconds
+        setInterval(captureAndSend, 1000);
+    });
+});
+      </script>
+</body>
+</html>

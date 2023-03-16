@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+>
+  <head>
+    <meta charset="utf-8" />
+
+
+    <title>Login</title>
+
+    <!-- Favicon -->
+
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+    /* Background and text color */
+    body {
+      background-color: #140303;
+      color: #333;
+      font-family: 'Public Sans', sans-serif;
+    }
+
+    /* Login box styles */
+    .card {
+      width: 30vw;
+      margin: 0 auto;
+      background-color: #f7f7f7;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      border-radius: 20px;
+    }
+
+    .card-body {
+      padding: 30px;
+    }
+
+    h4 {
+      margin-bottom: 20px;
+      color: #333;
+      font-weight: 600;
+      font-size: 24px;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    /* Input styles */
+    input[type='text'],
+    input[type='password'] {
+      width: 90%;
+      padding: 10px 15px;
+      margin-bottom: 20px;
+      border: none;
+      border-radius: 5px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+      background-color: #f5f5f5;
+      color: #333;
+      font-size: 16px;
+    }
+
+    input[type='text']::placeholder,
+    input[type='password']::placeholder {
+      color: #bbb;
+    }
+
+    /* Button styles */
+    button[type='submit'] {
+      width: 100%;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 50px;
+      background-color: #625bd5;
+      color: #fff;
+      font-size: 16px;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+
+    button[type='submit']:hover {
+      background-color: #000;
+      box-shadow: 0 0 4px #777;
+    }
+
+    /* Checkbox styles */
+    .form-check {
+      margin-bottom: 20px;
+    }
+
+    .form-check-label {
+      font-size: 16px;
+      color: #777;
+    }
+
+    .form-check-input:checked + .form-check-label::before {
+      background-color: #625bd5;
+      border-color: #625bd5;
+    }
+
+    /* Error message styles */
+    .error {
+      color: #e10927;
+      margin-top: 10px;
+      text-align: center;
+    }
+  </style>
+  </head>
+
+  <body>
+    <!-- Content -->
+
+    <div class="container-xxl">
+      <div class="authentication-wrapper authentication-basic container-p-y">
+        <div class="authentication-inner">
+          <!-- Register -->
+          <div class="card">
+            <div class="card-body">
+              <!-- Logo -->
+              <div class="app-brand justify-content-center">
+                <a href="#" class="app-brand-link gap-2">
+                </a>
+              </div>
+              <!-- /Logo -->
+              <h4 class="mb-2">Welcome! 👋</h4>
+              <p class="mb-4">Please sign-in to your account</p>
+
+              <form id="formAuthentication" class="mb-3" action="/face_detection/login" method="POST">
+                <div class="mb-3">
+                  <label for="user_name" class="form-label">Username</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="user_name"
+                    name="user_name"
+                    placeholder="Enter your username"
+                    autofocus
+                  />
+                </div>
+                <div class="mb-3 form-password-toggle">
+                  <div class="d-flex justify-content-between">
+                    <label class="form-label" for="user_pass">Password</label>
+                    </a>
+                  </div>
+                  <div class="input-group input-group-merge">
+                    <input
+                      type="password"
+                      id="user_pass"
+                      class="form-control"
+                      name="user_pass"
+                      placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                      aria-describedby="password"
+                    />
+                    <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                  </div>
+                </div>
+                <div class="mb-3">
+                    <p class="text-center" style="color: #e10927 !important" {{ error }}></p>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="remember-me" />
+                    <label class="form-check-label" for="remember-me"> Remember Me </label>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <button class="btn btn-primary d-grid w-100" type="submit">Sign in</button>
+                </div>
+              </form>
+
+            </div>
+          </div>
+          <!-- /Register -->
+        </div>
+      </div>
+    </div>
+
+
+ 
+
+    <!-- Page JS -->
+
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+  </body>
+</html>
